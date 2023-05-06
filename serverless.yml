@@ -10,8 +10,13 @@ provider:
     APP_KEY: base64:P9gmpDugdag6FqTYqW4tfNxTvUnjESYsZPbeRw9v3LU=
     QUEUE_CONNECTION: sqs
     SQS_QUEUE: ${construct:jobs.queueUrl}
+    MAIL_MAILER: smtp
+    MAIL_HOST: sandbox.smtp.mailtrap.io
+    MAIL_PORT: 2525
     MAIL_USERNAME: ${ssm:/laravel-dev/MAIL_USERNAME}
     MAIL_PASSWORD: ${ssm:/laravel-dev/MAIL_PASSWORD}
+    MAIL_ENCRYPTION: tls
+    MAIL_FROM_ADDRESS: "hello@example.com"
 
 package:
   # Files and directories to exclude from deployment
