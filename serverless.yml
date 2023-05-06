@@ -10,6 +10,8 @@ provider:
     APP_KEY: base64:P9gmpDugdag6FqTYqW4tfNxTvUnjESYsZPbeRw9v3LU=
     QUEUE_CONNECTION: sqs
     SQS_QUEUE: ${construct:jobs.queueUrl}
+    MAIL_USERNAME: ${ssm:/laravel-dev/MAIL_USERNAME}
+    MAIL_PASSWORD: ${ssm:/laravel-dev/MAIL_PASSWORD}
 
 package:
   # Files and directories to exclude from deployment
