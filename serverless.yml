@@ -18,6 +18,13 @@ provider:
     MAIL_ENCRYPTION: tls
     MAIL_FROM_ADDRESS: "hello@example.com"
 
+    DB_CONNECTION: mysql
+    DB_HOST: laravel-db.c3skrpo4bdac.us-east-1.rds.amazonaws.com
+    DB_PORT: 3306
+    DB_DATABASE: laravel-db
+    DB_USERNAME: ${ssm:/laravel-dev/DB_USERNAME}
+    DB_PASSWORD: ${ssm:/laravel-dev/DB_PASSWORD}
+
 package:
   # Files and directories to exclude from deployment
   patterns:
@@ -47,6 +54,14 @@ functions:
       - schedule:
           rate: rate(1 minute)
         #   input: '"schedule:run"'
+
+  vpc:
+    securityGroupIds:
+      - sg-0fe23e5839a37e0ba
+    subnetIds:
+      - subnet-08afab5fadd5aa497
+      - subnet-0be03e24ebad8f7b0
+      - subnet-078e3728da7ccddf5
 
 constructs:
   jobs:
