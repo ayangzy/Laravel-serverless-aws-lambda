@@ -44,6 +44,14 @@ functions:
     events:
       - httpApi: "*"
 
+    vpc:
+      securityGroupIds:
+        - sg-0fe23e5839a37e0ba
+      subnetIds:
+        - subnet-08afab5fadd5aa497
+        - subnet-0be03e24ebad8f7b0
+        - subnet-078e3728da7ccddf5
+
   # This function lets us run artisan commands in Lambda
   artisan:
     handler: artisan
@@ -55,13 +63,13 @@ functions:
           rate: rate(1 minute)
         #   input: '"schedule:run"'
 
-  vpc:
-    securityGroupIds:
-      - sg-0fe23e5839a37e0ba
-    subnetIds:
-      - subnet-08afab5fadd5aa497
-      - subnet-0be03e24ebad8f7b0
-      - subnet-078e3728da7ccddf5
+    vpc:
+      securityGroupIds:
+        - sg-0fe23e5839a37e0ba
+      subnetIds:
+        - subnet-08afab5fadd5aa497
+        - subnet-0be03e24ebad8f7b0
+        - subnet-078e3728da7ccddf5
 
 constructs:
   jobs:
